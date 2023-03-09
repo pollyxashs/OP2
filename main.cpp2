@@ -1,0 +1,15 @@
+#include "sss.h"
+int main()
+{
+
+    int k1, k2;
+    cout << "size1 ; size2" << endl;
+    cin >> k1 >> k2;
+    int z, d1;
+    cout << "WHAT YOU CHANGE?" << endl;
+    cin >> z >> d1;
+    cout <<  endl;
+    MATRIX(z, d1,k1,k2);
+    cout << "#_-_#" << endl;
+    MATRIX2(&z, &d1,&k1,&k2);
+}
