@@ -1,0 +1,90 @@
+#include "sss.h"
+#include "iostream"
+#include <vector>
+using namespace std;
+
+//  TODO: std::vector
+void MATRIX(int &a, int &b,int &c1,int &c2)
+{
+    int m1;
+
+    int m[3][3]
+    {
+      { 1, 2, 3 },
+      { 4, 5, 6 },
+      { 7, 8, 9 }
+    };
+    for (int i=0;i<3;i++)
+    {
+      m1 = m[a][i];
+      m[a][i] = m[b][i];
+      m[b][i] = m1;
+    }
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++)
+        cout << m[i][j] << ' ';
+      cout << endl;
+    }
+    vector < vector <int> > matrix(c1, vector <int>(c2));
+
+    for (int i = 0; i < c1; i++)
+        for (int j = 0; j < c2; j++)
+        {
+            cin >> matrix[i][j];
+        }
+    for (int i = 0; i < 3; i++)
+    {
+        m1 = matrix[a][i];
+        matrix[a][i] = matrix[b][i];
+        matrix[b][i] = m1;
+    }
+    for (int i = 0; i < c1; i++)
+    {
+        for (int j = 0; j < c2; j++)
+            cout << matrix[i][j] << ' ';
+        cout << endl;
+    }
+
+}
+
+void MATRIX2(int* aa1,int *bb1,int *cc1,int *cc2)
+{
+    int m1;
+    int m[3][3]
+    {
+      { 1, 2, 3 },
+      { 4, 5, 6 },
+      { 7, 8, 9 }
+    };
+    for (int i = 0; i < 3; i++)
+    {
+      m1 = m[*aa1][i];
+      m[*aa1][i] = m[*bb1][i];
+      m[*bb1][i] = m1;
+    }
+    for (int i = 0; i < 3; i++) {
+      for (int j = 0; j < 3; j++)
+        cout << m[i][j] << ' ';
+      cout << endl;
+    }
+    vector < vector <int> > matrix(*cc1, vector <int>(*cc2));
+    for (int i = 0; i < *cc1; i++)
+        for (int j = 0; j < *cc2; j++)
+        {
+            cin >> matrix[i][j];
+        }
+
+    for (int i = 0; i < 3; i++)
+    {
+        m1 = matrix[*aa1][i];
+        matrix[*aa1][i] = matrix[*bb1][i];
+        matrix[*bb1][i] = m1;
+    }
+    for (int i = 0; i < *cc1; i++)
+    {
+        for (int j = 0; j < *cc2; j++)
+            cout << matrix[i][j] << ' ';
+        cout << endl;
+    }
+
+}
