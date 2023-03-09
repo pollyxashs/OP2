@@ -1,0 +1,7 @@
+#include "iostream"
+using namespace std;
+
+void MATRIX(int&z, int&d1,int &k1,int&k2);
+
+
+void MATRIX2(int* pz,int *pd1,int *pk1,int *pk2);
