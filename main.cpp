@@ -1,23 +1,36 @@
-
 #include <iostream>
-#include "primer.h"
-
+#include "vector.h"
 using namespace std;
 
-int main(){
-LABfile file("file.txt");
-try {
-    file.open();
-} catch (std::exception e) {
-    cout << "file is not opened" << endl;
-}
+int main() {
 
-file.check();
+    int arr1[10] = { 3, 5, 2, 0, 1, 0, 0, 4, 1, 0 };
+    int arr2[10] = { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
 
-file.inSTRING("hi");
-file.inINT(6);
-file.inFLOAT(6.6);
+    Subset a(arr1);
+    Subset b(arr2);
 
-file.close();
+    Subset s3 = a + b;
+    s3.print();
 
+    if (a == b) {
+        std::cout << "a is equal to b" << std::endl;
+    }
+    else {
+        std::cout << "a is not equal to b" << std::endl;
+    }
+
+    if (a != b) {
+        std::cout << "a is not equal to b" << std::endl;
+    }
+    else {
+        std::cout << "a is equal to b" << std::endl;
+    }
+
+    a += 5;
+    a.print();
+    b -= 2;
+    b.print();
+
+    return 0;
 }
