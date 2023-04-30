@@ -1,0 +1,49 @@
+#include <algorithm>
+#include <iostream>
+
+// none_of - возвращает true, если все элементы диапазона не удовлетворяют некоторому предикату. Иначе false
+template<typename InputIterator, typename UnaryPredicate>
+bool none_of(InputIterator first, InputIterator last, UnaryPredicate pred) {
+    return std::none_of(first, last, pred);
+}
+
+// is_sorted - возвращает true, если все элементы диапазона находятся в отсортированном порядке относительно некоторого критерия
+template<typename ForwardIterator, typename Compare>
+bool is_sorted(ForwardIterator first, ForwardIterator last, Compare comp) {
+    return std::is_sorted(first, last, comp);
+}
+
+// find_not - находит первый элемент, не равный заданному
+template<typename InputIterator, typename T>
+InputIterator find_not(InputIterator first, InputIterator last, const T& value) {
+    return std::find_if_not(first, last, [&](const auto& x){ return x == value; });
+}
+
+int main() {
+    std::vector<int> vec{1, 2, 3, 4, 5};
+    if (none_of(vec.begin(), vec.end(), [](int x){ return x % 2 == 0; })) {
+        std::cout << "All elements in vec are odd\n";
+    } else {
+        std::cerr << "Some elements in vec are even\n";
+        return 1;
+    }
+
+    std::vector<double> vec2{1.5, 2.5, 3.5, 2.0, 5.5};
+    if (is_sorted(vec2.begin(), vec2.end(), std::less<double>())) {
+        std::cout << "vec2 is sorted\n";
+    } else {
+        std::cerr << "vec2 is not sorted\n";
+        return 1;
+    }
+
+    std::vector<std::string> vec3{"foo", "foo", "bar", "foo", "baz"};
+    auto it = find_not(vec3.begin(), vec3.end(), std::string("foo"));
+    if (it == vec3.end()) {
+        std::cout << "All elements in vec3 are equal to \"foo\"\n";
+    } else {
+        std::cerr << "The first element in vec3 that is not equal to \"foo\" is \"" << *it << "\"\n";
+        return 1;
+    }
+
+    return 0;
+}
